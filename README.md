@@ -2,8 +2,9 @@
 
 1.Start Player
 
-| Action start player               | picovr.intent.action.player                                  |
+| Parameter                         | Remark                                                       |
 | --------------------------------- | ------------------------------------------------------------ |
+| Action start player               | picovr.intent.action.player                                  |
 | uri                               | Play address (required)                                      |
 | title                             | The name of the video                                        |
 | voidetype                         | Video type                                                   |
