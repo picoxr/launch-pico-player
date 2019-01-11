@@ -1,3 +1,5 @@
+<p align="right"><a href="https://github.com/PicoSupport/PicoSupport" target="_blank"> <img src="https://github.com/PicoSupport/PicoSupport/blob/master/Assets/home.png" width="20"/> </a></p>
+
 # Player Description
 
 1.Start Player
@@ -22,20 +24,20 @@
   public enum VoideoType
   {
       VideoType_2D=0;  //2D
-      VoideType_3D_LR=1;   //3D左右
-      VoideType_360_2D=2;  //全景2D
-      VoideType_360_3D_TB=3;  //全景3D上下
-      VoideType_360_3D_BT=4;  //全景3d下上
-      VoideType_360_3D_LR=5;  //全景3D左右
-      VoideType_360_3D_RL=6;  //全景3D右左
-      VoideType_3D_TB=7;      //3D上下		
-      VoideType_3D_BT=8;      //3D下上
-      VoideType_3D_RL=9;      //3D右左
-      VoideType_180_2D=10;    //180 2D
-      VoideType_180_3D_TB=11; //180 3D 上下
-      VoideType_180_3D_BT=12; //180 3D 下上
-      VoideType_180_3D_LR=13; //180 3D左右
-      VoideType_180_3D_RL=14; //180 3D右左
+      VoideType_3D_LR=1;   //3DLR
+      VoideType_360_2D=2;  //360 2D
+      VoideType_360_3D_TB=3;  //360 3D TB
+      VoideType_360_3D_BT=4;  //360 3d BT
+      VoideType_360_3D_LR=5;  //360 3D LR
+      VoideType_360_3D_RL=6;  //
+      VoideType_3D_TB=7;      //		
+      VoideType_3D_BT=8;      //
+      VoideType_3D_RL=9;      //
+      VoideType_180_2D=10;    //
+      VoideType_180_3D_TB=11; //
+      VoideType_180_3D_BT=12; //
+      VoideType_180_3D_LR=13; //
+      VoideType_180_3D_RL=14; //
       Unknow
   }
   ```
