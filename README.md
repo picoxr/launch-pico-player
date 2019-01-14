@@ -2,7 +2,7 @@
 
 # Player Description
 
-Note: Regarding java package creation and usege, please refer to [the Guideline](https://github.com/PicoSupport/PicoSupport/blob/master/Call%20And%20Export%20Jar.docx)
+Note: Regarding java package creation and usege, please refer to [the Guideline](https://github.com/PicoSupport/PicoSupport/blob/master/How_to_use_JAR_file_in_Unity_project_on_Pico_device.docx)
 
 1.Start Player
 
