@@ -12,8 +12,10 @@ You need to transfer the video to /Download/ directory, launch this app then you
 android:name="com.picovr.picoplayb100manager.MainActivity"
 
 ## Permission
+```
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+```
 
 ## Pamameter Introduction
 | Parameter                         | Remark                                                       |
