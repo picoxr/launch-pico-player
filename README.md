@@ -28,7 +28,7 @@ android:name="com.picovr.picoplayb100manager.MainActivity"
 | Videoheight                       | Video height                                                 |
 | playTime                          | Play the starting point                                      |
 | autoPlay                          | Whether to automatically play, int data, 1, automatically play;0, load the first frame, |
-| initen.putExtra("videoSource",3); |                                                              |
+| videoSource                       |                                                              |
 
 ## Supported Video Format
     VideoType_2D=0;  //2D
