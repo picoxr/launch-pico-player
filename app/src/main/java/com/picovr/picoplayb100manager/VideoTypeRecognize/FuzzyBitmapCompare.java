@@ -62,7 +62,7 @@ public class FuzzyBitmapCompare {
         Log.i("videitype", "pixel2:(" + red2 + "," + green2 + "," + blue2 + ")");
 
         if (Math.abs(red1 - red2) < 10 && Math.abs(green1 - green2) < 10 && Math.abs(blue1 - blue2) < Constant.FUZZY_DIFFERENT_VALUE) {
-            Log.i("videitype", "相似");
+            Log.i("videitype", "similar");
             return true;
         } else {
             return false;
