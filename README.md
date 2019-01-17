@@ -9,7 +9,9 @@ This demo shows how to play specific video using system video player
 You need to transfer the video to /Download/ directory, launch this app then you can watch it.
 
 ## Class Name
+```
 android:name="com.picovr.picoplayb100manager.MainActivity"
+```
 
 ## Permission
 ```
