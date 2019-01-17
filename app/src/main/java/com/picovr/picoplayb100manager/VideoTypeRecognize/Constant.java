@@ -3,40 +3,40 @@ package com.picovr.picoplayb100manager.VideoTypeRecognize;
 public class Constant {
 
     /**
-     * 识别算法中相似度的绝对值
+     * absolulte value in recognization algorithm
      */
     public static final int ABSOLUTE_CRITICAL_VALUE = 35;
     /**
-     * 识别算法中上下相似度和左右相似度的差值
+     * the diffrence value of top-bottom and left-right value in recognizaition algorithm
      */
     public static final int RELATIVE_CRITICAL_VALUE = 20;
     /**
-     * 默认的视频宽高比
+     * default video's aspect ratio
      */
     public static final float DEFAULT_VIDEO_RADIO = 0.0f;
     /**
-     * 模糊算法中像素值的模糊范围
+     * fuzzy range of pixel value in fuzzy algorithm
      */
     public static final int FUZZY_DIFFERENT_VALUE = 15;
     /**
-     * 默认的视频类型
+     * default video type
      */
     public static final int DEFAULT_VIDEO_TYPE = MovieType.TYPE_2D;
 
     /**
-     * 默认的视频类型来源
+     * default video source
      */
     public static final int TYPE_SOURCE_DEFAULT = 0;
     /**
-     * 视频类型通过视频名字获得
+     * video type got by video name
      */
     public static final int TYPE_SOURCE_NAME = 1;
     /**
-     * 视频类型通过视频截图对比获得
+     * video type got by compare video screenshot
      */
     public static final int TYPE_SOURCE_IMAGE_COMPARE = 2;
     /**
-     * 视频类型由用户自己定义
+     * custom video type
      */
     public static final int TYPE_SOURCE_USER_DEFINE = 3;
 
