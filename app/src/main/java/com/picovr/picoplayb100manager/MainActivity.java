@@ -32,12 +32,10 @@ public class MainActivity extends Activity {
     }
     
     public void openPlayerClick(View view) {
-
         openPlayer(fileDir);
     }
 
     public void openPlayer(String fileDir){
-
         //directory = /storage/emulated/0/download/test.mp4
         Log.e(TAG, "directory = " + fileDir);
         String uri = fileDir;
@@ -53,8 +51,6 @@ public class MainActivity extends Activity {
         intent.putExtra("uri", Uri.fromFile(new File(uri)).toString());
         intent.putExtra("videoType", videoType + "");
         startActivity(intent);
-
     }
-
 }
 
