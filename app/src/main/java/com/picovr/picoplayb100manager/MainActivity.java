@@ -18,23 +18,27 @@ public class MainActivity extends Activity {
 
     private static String action = "picovr.intent.action.player";
     private static String directory = null;
-    private static final String NAME = "东江湖.mp4";
+    private static final String NAME = "test.mp4";
+    String fileDir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        directory = Environment.getExternalStoragePublicDirectory(DOWNLOAD_SERVICE).toString();
+        fileDir = directory + File.separator + NAME;
+
     }
     
     public void openPlayerClick(View view) {
-        directory = Environment.getExternalStoragePublicDirectory(DOWNLOAD_SERVICE).toString();
-        String fileDir = directory + File.separator + NAME;
+
         openPlayer(fileDir);
     }
 
     public void openPlayer(String fileDir){
 
+        //directory = /storage/emulated/0/download/test.mp4
         Log.e(TAG, "directory = " + fileDir);
         String uri = fileDir;
 
