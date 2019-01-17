@@ -93,8 +93,7 @@ public class VideoTypeUtils {
 	}
 
 	/**
-	 * 根据视频宽高比和切图对比结果，获取视频打开类型
-	 *
+	 * get video type on the basis of video aspect ratio and result of compare the fuzzy values of vertical direction and horizontal direction
 	 * @param radio
 	 * @param horizontalCompareResult
 	 * @param verticalCompareResult
