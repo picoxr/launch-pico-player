@@ -26,15 +26,17 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
     }
+    
+    public void openPlayerClick(View view) {
+        directory = Environment.getExternalStoragePublicDirectory(DOWNLOAD_SERVICE).toString();
+        String fileDir = directory + File.separator + NAME;
+        openPlayer(fileDir);
+    }
 
-    public void openPlayerClick(View view){
+    public void openPlayer(String fileDir){
 
-        Log.e(TAG, "openPlayerClick");
-
-        directory = Environment.getExternalStoragePublicDirectory(DOWNLOAD_SERVICE).getPath();
-//		directory = Externalstoragedirectory.getSDdir(this);
-        Log.e(TAG, "directory = " + directory);
-        String uri = directory + File.separator + NAME;
+        Log.e(TAG, "directory = " + fileDir);
+        String uri = fileDir;
 
         Log.e(TAG, "uri = " + uri);
         Log.e(TAG, "uri = " + Uri.fromFile(new File(uri)).toString());
