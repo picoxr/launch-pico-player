@@ -24,7 +24,7 @@ public class VideoTypeUtils {
 	private static MediaMetadataRetriever retriever;
 
 	/**
-	 * 添加了模糊值的图片对比
+	 * compare the fuzzy values of vertical direction and horizontal direction
 	 *
 	 * @param bitmap
 	 * @return
@@ -38,7 +38,7 @@ public class VideoTypeUtils {
 		List<Bitmap> verticalBitmaps = ImageSplitter.splitVertical(zoomBimtap);
 		String verticalSimilarity = FuzzyBitmapCompare
 				.similarity(verticalBitmaps.get(0), verticalBitmaps.get(1));
-		Log.i(TAG, "水平相似度：" + horizontalSimilarity + "***上下相似度："
+		Log.i(TAG, "HorizontalSimilarity：" + horizontalSimilarity + "***verticalSimilarity："
 				+ verticalSimilarity);
 		float horizontalSimilarityFloat = Float.parseFloat(horizontalSimilarity
 				.substring(0, horizontalSimilarity.length() - 1));
@@ -49,24 +49,24 @@ public class VideoTypeUtils {
 	}
 
 	/***
-	 * 图片的缩放方法
+	 * Zoom Image
 	 *
-	 * @param bgimage   ：源图片资源
-	 * @param newWidth  ：缩放后宽度
-	 * @param newHeight ：缩放后高度
+	 * @param bgimage   ：source image resource
+	 * @param newWidth  ：width after zoom
+	 * @param newHeight ：height after zoom
 	 * @return
 	 */
 	public static Bitmap zoomImage(Bitmap bgimage, double newWidth,
 			double newHeight) {
-		// 获取这个图片的宽和高
+		//get width and height
 		float width = bgimage.getWidth();
 		float height = bgimage.getHeight();
-		// 创建操作图片用的matrix对象
+		// create Matrix object of source image
 		Matrix matrix = new Matrix();
-		// 计算宽高缩放率
+		// compute new width and height
 		float scaleWidth = ((float) newWidth) / width;
 		float scaleHeight = ((float) newHeight) / height;
-		// 缩放图片动作
+		// zoom
 		matrix.postScale(scaleWidth, scaleHeight);
 		Bitmap bitmap = Bitmap.createBitmap(bgimage, 0, 0, (int) width,
 				(int) height, matrix, true);
@@ -78,9 +78,9 @@ public class VideoTypeUtils {
 		retriever = new MediaMetadataRetriever();
 		retriever.setDataSource(videoPath);
 		int height = Integer.parseInt(retriever.extractMetadata(
-				MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)); // 视频高度
+				MediaMetadataRetriever.METADATA_KEY_VIDEO_HEIGHT)); // video height
 		int width = Integer.parseInt(retriever.extractMetadata(
-				MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)); // 视频宽度
+				MediaMetadataRetriever.METADATA_KEY_VIDEO_WIDTH)); // video width
 		Log.d(TAG, "height:" + height + "***width:" + width);
 		DecimalFormat df = new DecimalFormat("0.0");
 		float radio = Float.parseFloat(df.format((float) width / height));
@@ -94,7 +94,6 @@ public class VideoTypeUtils {
 
 	/**
 	 * 根据视频宽高比和切图对比结果，获取视频打开类型
-	 * 返回的是视频类型的String值
 	 *
 	 * @param radio
 	 * @param horizontalCompareResult
@@ -124,15 +123,14 @@ public class VideoTypeUtils {
 			if (horizontalCompareResult > Constant.ABSOLUTE_CRITICAL_VALUE
 					&& horizontalCompareResult
 							- verticalCompareResult > Constant.RELATIVE_CRITICAL_VALUE) {
-				// 180°3D左右
+				// 180°3D left right
 				 return MovieType.TYPE_3D180_LR;
-//				return "180°3D左右";
+//				return "180°3D LR";
 			} else if (verticalCompareResult > Constant.ABSOLUTE_CRITICAL_VALUE
 					&& verticalCompareResult
 							- horizontalCompareResult > Constant.RELATIVE_CRITICAL_VALUE) {
-				// 360°3D上下;
+				// 360°3D top bottom;
 				 return MovieType.TYPE_3D360_TB;
-//				return "360°3D上下";
 			} else {
 				// 360
 				 return MovieType.TYPE_360;
@@ -140,29 +138,25 @@ public class VideoTypeUtils {
 			}
 		}
 		if (radio == 4) {
-			// 360°3D左右
+			// 360°3D left right
 			 return MovieType.TYPE_3D360_LR;
-//			return "360°3D左右";
 		}
 		if (radio == 0.5) {
-			// 180°3D上下
+			// 180°3D top bottom
 			 return MovieType.TYPE_3D180_TB;
-//			return "180°3D上下";
 		}
 		if ((Math.abs(radio - 1.85) <= 0.5)
 				&& verticalCompareResult > Constant.ABSOLUTE_CRITICAL_VALUE
 				&& verticalCompareResult
 						- horizontalCompareResult > Constant.RELATIVE_CRITICAL_VALUE) {
-			// 360°3D上下;
+			// 360°3D top bottom;
 			 return MovieType.TYPE_3D360_TB;
-//			return "360°3D上下";
 		}
 		if (horizontalCompareResult > Constant.ABSOLUTE_CRITICAL_VALUE
 				&& horizontalCompareResult
 						- verticalCompareResult > Constant.RELATIVE_CRITICAL_VALUE) {
-			// 3D左右
+			// 3D left right
 			 return MovieType.TYPE_3D_LR;
-//			return "3D左右";
 		}
 		// return "2D";
 		 return MovieType.TYPE_2D;
