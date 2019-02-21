@@ -1,6 +1,6 @@
 # Player Description
 
-Note: Regarding JAR file creation and usage, please refer to [the Guideline](https://github.com/picoxr/support/blob/master/How_to_use_JAR_file_in_Unity_project_on_Pico_device.docx)
+Note: Regarding JAR file creation and usage, please refer to [the Guideline](https://github.com/picoxr/support/blob/master/How%20to%20use%20JAR%20file%20in%20Unity%20project%20on%20Pico%20Device.docx)
 
 ## Introduction
 This demo shows how to play specific video using system video player
