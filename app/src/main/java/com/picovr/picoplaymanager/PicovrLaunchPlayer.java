@@ -17,23 +17,13 @@ public class PicovrLaunchPlayer {
     private static String directory = null;
     private static String NAME = "test.mp4";
 
-    public void androidPlayer(Context context, String path, String playerName, String videoType) {
-
-        Log.e(TAG, "androidPlayer");
-        NAME = playerName;
-//        directory = Environment.getExternalStoragePublicDirectory(context.DOWNLOAD_SERVICE).getPath();
-//		directory = Externalstoragedirectory.getSDdir(this);
-        directory = path;
-//        String uri = directory + File.separator + NAME;
-        String uri = directory + NAME;
-        Log.e(TAG, "uri = " + uri);
-        Log.e(TAG, "uri = " + Uri.fromFile(new File(uri)).toString());
-//        int videoType = VideoTypeUtils.getVideoType(uri);
-        Log.e(TAG, "directory = " + directory);
+    public void launchVideoPlayer(Context context, String videoPath, String videoName, String videoType) {
+        String path = videoPath + videoName;
+        Log.e(TAG, "path = " + path);
         Intent intent = new Intent();
         intent.setAction(action);
-        intent.putExtra("title", NAME);
-        intent.putExtra("uri", Uri.fromFile(new File(uri)).toString());
+        intent.putExtra("title", videoName);
+        intent.putExtra("uri", Uri.fromFile(new File(path)).toString());
         intent.putExtra("videoType", videoType);
         context.startActivity(intent);
 
