@@ -2,18 +2,40 @@
 
 Note: Regarding JAR file creation and usage, please refer to [the Guideline](https://github.com/picoxr/support/blob/master/How%20to%20Use%20JAR%20file%20in%20Unity%20project%20on%20Pico%20device.docx)
 
+**JAR path**: \app\build\libs\launch-pico-player-master.jar
+**APK path**: \app\build\outputs\apk\debug\launch-pico-player-master.apk
+
+## Supported Devices
+Pico Goblin, Pico Neo, Pico G2, Pico G2 4K 
+
 ## Introduction
 This demo shows how to play specific video using system video player
 
-## Usage
+## APK Usage
 You need to transfer the video to /Download/ directory, launch this app then you can watch it.
 
-## Class Name
+## JAR Usage
+* Non-inheriting the main Activity
 ```
-android:name="com.picovr.picoplayb100manager.MainActivity"
+AndroidJavaObject ajo;
+AndroidJavaObject ActivityContext;
+
+private void Start()
+{
+    ajo = new AndroidJavaObject("com.picovr.baidujar.PowerUtil");
+    ActivityContext = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+		
+    ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "test.mp4", "2"));
+}
+```
+
+* inheriting the main Activity
+```
+PicoUnityActivy.CallObjectMethod("androidPlayer", "/storage/emulated/0/Download/", "test.mp4", "2");
 ```
 
 ## Permission
+add these to AndroidManifest.xml in Unity project.
 ```
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -22,15 +44,14 @@ android:name="com.picovr.picoplayb100manager.MainActivity"
 ## Pamameter Introduction
 | Parameter                         | Remark                                                       |
 | --------------------------------- | ------------------------------------------------------------ |
-| Action start player               | picovr.intent.action.player                                  |
+| Action                            | picovr.intent.action.player                                  |
 | uri                               | Play address (required)                                      |
 | title                             | The name of the video                                        |
 | voidetype                         | Video type                                                   |
 | Videowidth                        | Width of the video                                           |
 | Videoheight                       | Video height                                                 |
 | playTime                          | Play the starting point                                      |
-| autoPlay                          | Whether to automatically play, int data, 1, automatically play;0, load the first frame, |
-| videoSource                       |                                                              |
+| autoPlay                          | Whether to automatically play, int data, 1, automatically play;0, load the first frame, |         
 
 ## Supported Video Format
     VideoType_2D=0;  //2D
