@@ -10,21 +10,14 @@ Pico Goblin, Pico Neo, Pico G2, Pico G2 4K
 This demo shows how to play specific video using system video player
 
 ## APK Usage
-You need to transfer the video to /Download/ directory, launch this app then you can watch it.
+You need to transfer the video named "test.mp4" to /Download/ directory, launch this app then you can watch it.
 
 ## JAR Usage
 * Non-inheriting the main Activity
 ```
-AndroidJavaObject ajo;
-AndroidJavaObject ActivityContext;
-
-private void Start()
-{
-    ajo = new AndroidJavaObject("com.picovr.baidujar.PowerUtil");
-    ActivityContext = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
-		
-    ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "test.mp4", "2"));
-}
+AndroidJavaObject ajo = new AndroidJavaObject("com.picovr.picoplaymanager.PicovrPlayManagerActivity");
+AndroidJavaObject ActivityContext = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "test.mp4", "2"));
 ```
 
 * inheriting the main Activity
