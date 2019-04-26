@@ -7,17 +7,21 @@
 Pico Goblin, Pico Neo, Pico G2, Pico G2 4K 
 
 ## Introduction
-This demo shows how to play specific video using system video player
+This demo shows how to launch system video player with specified video file.
 
 ## APK Usage
 You need to transfer the video named "test.mp4" to /Download/ directory, launch this app then you can watch it.
 
-## JAR Usage
+## API defined in JAR file
+void LaunchVideoPlayer(String videoPath, String videoName, String videoType)     
+About videoType parameter introduction and more information, refer to [PicoVR Built-in Video Player](http://static.appstore.picovr.com/docs/VideoPlayer/index.html)
+
+## JAR file Usage
 * Non-inheriting the main Activity
 ```
 AndroidJavaObject ajo = new AndroidJavaObject("com.picovr.picoplaymanager.PicovrLaunchPlayer");
 AndroidJavaObject ActivityContext = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
-ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "test.mp4", "2");
+ajo.Call("LaunchVideoPlayer", ActivityContext, "/storage/emulated/0/Download/", "test.mp4", "2");
 ```
 
 * inheriting the main Activity
@@ -26,7 +30,7 @@ ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "tes
 3. Copy the PicoUnityActivity.cs to the Assets folder;     
 4. In the script file, Use “CallObjectMethod” interface to call the methods defined in JAR files as below.
 ```
-PicoUnityActivity.CallObjectMethod("androidPlayer", "/storage/emulated/0/Download/", "test.mp4", "2");
+PicoUnityActivity.CallObjectMethod("LaunchVideoPlayer", "/storage/emulated/0/Download/", "test.mp4", "2");
 ```
 
 ## Permission
@@ -34,33 +38,4 @@ Add these to AndroidManifest.xml in Unity project.
 ```
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-```
-
-## Pamameter Introduction
-| Parameter                         | Remark                                                       |
-| --------------------------------- | ------------------------------------------------------------ |
-| Action                            | picovr.intent.action.player                                  |
-| uri                               | Play address                                                 |
-| title                             | The name of the video                                        |
-| videoType                         | Video type                                                           
-
-## Supported Video Format
-    VideoType_2D=0;  //2D
-    VoideType_3D_LR=1;   //3D left-right
-    VoideType_360_2D=2;  //360 2D
-    VoideType_360_3D_TB=3;  //360 3D top-bottom
-    VoideType_360_3D_BT=4;  //360 3d bottom-top
-    VoideType_360_3D_LR=5;  //360 3D left-right
-    VoideType_360_3D_RL=6;  //360 3D right-left
-    VoideType_3D_TB=7;      //3D top-bottom
-    VoideType_3D_BT=8;      //3D bottom-top
-    VoideType_3D_RL=9;      //3D right-left
-    VoideType_180_2D=10;    //180 2D
-    VoideType_180_3D_TB=11; //180 3D top-bottom
-    VoideType_180_3D_BT=12; //180 3D bottom-top
-    VoideType_180_3D_LR=13; //180 3D left-right
-    VoideType_180_3D_RL=14; //180 3D right-left
-
-## Note
-Note：Don't set videoType to 4,6,8,9,12,14.
-      If you don't specify any videoType, it'll be 0 ( 2D ) by default.
+```    
