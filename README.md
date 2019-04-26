@@ -21,6 +21,11 @@ ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "tes
 ```
 
 * inheriting the main Activity
+1. Modify main activity of AndroidManifest.xml to com.picovr.picoplaymanager.PicovrPlayManagerActivity;    
+2. Copy the JAR file to the Assets/Plugins/Android/ folder;    
+3. Copy the PicoUnityActivity.cs to the Assets folder;     
+4. Modify the className property of the CurrentActivity() method in PicoUnityActivity.cs to com.picovr.picoplaymanager.PicovrPlayManagerActivity;    
+5. In the script file, Use “CallObjectMethod” interface to call the methods defined in JAR files as below.
 ```
 PicoUnityActivy.CallObjectMethod("androidPlayer", "/storage/emulated/0/Download/", "test.mp4", "2");
 ```
@@ -36,30 +41,26 @@ add these to AndroidManifest.xml in Unity project.
 | Parameter                         | Remark                                                       |
 | --------------------------------- | ------------------------------------------------------------ |
 | Action                            | picovr.intent.action.player                                  |
-| uri                               | Play address (required)                                      |
+| uri                               | Play address                                                 |
 | title                             | The name of the video                                        |
-| voidetype                         | Video type                                                   |
-| Videowidth                        | Width of the video                                           |
-| Videoheight                       | Video height                                                 |
-| playTime                          | Play the starting point                                      |
-| autoPlay                          | Whether to automatically play, int data, 1, automatically play;0, load the first frame, |         
+| videoType                         | Video type                                                           
 
 ## Supported Video Format
     VideoType_2D=0;  //2D
-    VoideType_3D_LR=1;   //3DLR
+    VoideType_3D_LR=1;   //3D left-right
     VoideType_360_2D=2;  //360 2D
-    VoideType_360_3D_TB=3;  //360 3D TB
-    VoideType_360_3D_BT=4;  //360 3d BT
-    VoideType_360_3D_LR=5;  //360 3D LR
-    VoideType_360_3D_RL=6;  //
-    VoideType_3D_TB=7;      //
-    VoideType_3D_BT=8;      //
-    VoideType_3D_RL=9;      //
-    VoideType_180_2D=10;    //
-    VoideType_180_3D_TB=11; //
-    VoideType_180_3D_BT=12; //
-    VoideType_180_3D_LR=13; //
-    VoideType_180_3D_RL=14; //
+    VoideType_360_3D_TB=3;  //360 3D top-bottom
+    VoideType_360_3D_BT=4;  //360 3d bottom-top
+    VoideType_360_3D_LR=5;  //360 3D left-right
+    VoideType_360_3D_RL=6;  //360 3D right-left
+    VoideType_3D_TB=7;      //3D top-bottom
+    VoideType_3D_BT=8;      //3D bottom-top
+    VoideType_3D_RL=9;      //3D right-left
+    VoideType_180_2D=10;    //180 2D
+    VoideType_180_3D_TB=11; //180 3D top-bottom
+    VoideType_180_3D_BT=12; //180 3D bottom-top
+    VoideType_180_3D_LR=13; //180 3D left-right
+    VoideType_180_3D_RL=14; //180 3D right-left
 
 ## Note
 Note：Don't set videoType to 4,6,8,9,12,14.
