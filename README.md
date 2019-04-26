@@ -21,7 +21,7 @@ ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "tes
 ```
 
 * inheriting the main Activity
-1. Modify main activity of AndroidManifest.xml to com.picovr.picoplaymanager.PicovrPlayManagerActivity;    
+1. Modify main activity of AndroidManifest.xml to com.picovr.picoplaymanager.PicovrLaunchPlayer;    
 2. Copy the JAR file to the Assets/Plugins/Android/ folder;    
 3. Copy the PicoUnityActivity.cs to the Assets folder;     
 4. In the script file, Use “CallObjectMethod” interface to call the methods defined in JAR files as below.
