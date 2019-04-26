@@ -30,7 +30,7 @@ PicoUnityActivity.CallObjectMethod("androidPlayer", "/storage/emulated/0/Downloa
 ```
 
 ## Permission
-add these to AndroidManifest.xml in Unity project.
+Add these to AndroidManifest.xml in Unity project.
 ```
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
