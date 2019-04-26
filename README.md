@@ -15,13 +15,13 @@ You need to transfer the video named "test.mp4" to /Download/ directory, launch 
 ## JAR Usage
 * Non-inheriting the main Activity
 ```
-AndroidJavaObject ajo = new AndroidJavaObject("com.picovr.picoplaymanager.PicovrPlayManagerActivity");
+AndroidJavaObject ajo = new AndroidJavaObject("com.picovr.picoplaymanager.PicovrLaunchPlayer");
 AndroidJavaObject ActivityContext = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
 ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "test.mp4", "2"));
 ```
 
 * inheriting the main Activity
-1. Modify main activity of AndroidManifest.xml to com.picovr.picoplaymanager.PicovrLaunchPlayer;    
+1. Modify main activity of AndroidManifest.xml to com.picovr.picoplaymanager.PicovrPlayManagerActivity;    
 2. Copy the JAR file to the Assets/Plugins/Android/ folder;    
 3. Copy the PicoUnityActivity.cs to the Assets folder;     
 4. In the script file, Use “CallObjectMethod” interface to call the methods defined in JAR files as below.
