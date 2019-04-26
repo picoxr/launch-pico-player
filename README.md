@@ -2,7 +2,7 @@
 
 Note: Regarding JAR file creation and usage, please refer to [the Guideline](https://github.com/picoxr/support/blob/master/How%20to%20Use%20JAR%20file%20in%20Unity%20project%20on%20Pico%20device.docx)
 
-**JAR path**: \app\build\libs\launch-pico-player-master.jar
+**JAR path**: \app\build\libs\launch-pico-player-master.jar 
 **APK path**: \app\build\outputs\apk\debug\launch-pico-player-master.apk
 
 ## Supported Devices
