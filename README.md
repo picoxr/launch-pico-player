@@ -26,7 +26,7 @@ ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "tes
 3. Copy the PicoUnityActivity.cs to the Assets folder;     
 4. In the script file, Use “CallObjectMethod” interface to call the methods defined in JAR files as below.
 ```
-PicoUnityActivy.CallObjectMethod("androidPlayer", "/storage/emulated/0/Download/", "test.mp4", "2");
+PicoUnityActivity.CallObjectMethod("androidPlayer", "/storage/emulated/0/Download/", "test.mp4", "2");
 ```
 
 ## Permission
