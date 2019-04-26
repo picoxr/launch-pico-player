@@ -24,8 +24,7 @@ ajo.Call("androidPlayer", ActivityContext, "/storage/emulated/0/Download/", "tes
 1. Modify main activity of AndroidManifest.xml to com.picovr.picoplaymanager.PicovrPlayManagerActivity;    
 2. Copy the JAR file to the Assets/Plugins/Android/ folder;    
 3. Copy the PicoUnityActivity.cs to the Assets folder;     
-4. Modify the className property of the CurrentActivity() method in PicoUnityActivity.cs to com.picovr.picoplaymanager.PicovrPlayManagerActivity;    
-5. In the script file, Use “CallObjectMethod” interface to call the methods defined in JAR files as below.
+4. In the script file, Use “CallObjectMethod” interface to call the methods defined in JAR files as below.
 ```
 PicoUnityActivy.CallObjectMethod("androidPlayer", "/storage/emulated/0/Download/", "test.mp4", "2");
 ```
