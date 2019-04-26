@@ -1,4 +1,4 @@
-package com.picovr.picoplayb100manager;
+package com.picovr.picoplaymanager;
 
 import java.io.File;
 import android.app.Activity;
@@ -9,7 +9,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 
-import com.picovr.picoplayb100manager.VideoTypeRecognize.VideoTypeUtils;
+import com.picovr.picoplaymanager.VideoTypeRecognize.VideoTypeUtils;
 
 
 public class MainActivity extends Activity {

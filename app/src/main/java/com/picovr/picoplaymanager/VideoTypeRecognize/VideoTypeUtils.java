@@ -1,17 +1,10 @@
-package com.picovr.picoplayb100manager.VideoTypeRecognize;
+package com.picovr.picoplaymanager.VideoTypeRecognize;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.MediaMetadataRetriever;
-import android.net.Uri;
-import android.os.Environment;
 import android.util.Log;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.text.DecimalFormat;
 import java.util.List;
 
@@ -20,7 +13,7 @@ import java.util.List;
  */
 
 public class VideoTypeUtils {
-	public static String TAG = "videotype";
+	private static final String TAG = "VideoTypeUtils";
 	private static MediaMetadataRetriever retriever;
 
 	/**

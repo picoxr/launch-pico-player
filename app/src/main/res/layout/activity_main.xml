@@ -13,6 +13,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:onClick="openPlayerClick"
-        android:text="打开播放器" />
+        android:text="Open Player" />
 
 </RelativeLayout>

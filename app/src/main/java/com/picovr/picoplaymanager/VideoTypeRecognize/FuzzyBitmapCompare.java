@@ -1,4 +1,4 @@
-package com.picovr.picoplayb100manager.VideoTypeRecognize;
+package com.picovr.picoplaymanager.VideoTypeRecognize;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

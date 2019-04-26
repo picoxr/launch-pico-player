@@ -1,4 +1,4 @@
-package com.picovr.picoplayb100manager;
+package com.picovr.picoplaymanager;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.picovr.picoplayb100manager;
+package com.picovr.picoplaymanager;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,8 +12,6 @@ import android.os.storage.StorageManager;
 import android.util.Log;
 
 /**
- * 现在很多厂商喜欢把内部存储挂载在原本SD卡的节点上，导致我们现在使用 environment.getexternalstoragedirectory()
- * 获取到的往往是内部存储的路径，为了解决这一问题，我们翻阅源码可以找到这样一个方法：
  * 
  * @author lance.li
  *
@@ -24,13 +22,11 @@ public class Externalstoragedirectory {
 	private static String ExternalPath2;
 
 	/**
-	 * 获取sd卡文件的路径 通过反射获取到隐藏类来模仿系统源码获取到信息，而这个也可以用来获取到6.0以上被打乱了的sd卡名称。
+	 * get SD card path
 	 */
 	public static String getSDdir(Context mContext) {
-
 		getMountedSDCardCount(mContext);
 		return ExternalPath1;
-
 	}
 
 	private static int getMountedSDCardCount(Context context) {
@@ -80,9 +76,7 @@ public class Externalstoragedirectory {
 	}
 
 	/**
-	 * 如果以上方法出现问题（获取到的结果为NULL），可以采用下面的方法，具体可以自己修改，我只对6.0进行的处理：
-	 * 
-	 * @return 返回值即为sd卡的名称，可以自己再进行修改和包装一下
+	 * if method above doesn't work, try this.
 	 */
 	public static String getPath() {
 		Runtime mRuntime = Runtime.getRuntime();

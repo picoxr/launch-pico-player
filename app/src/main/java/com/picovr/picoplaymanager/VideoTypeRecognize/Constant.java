@@ -1,4 +1,4 @@
-package com.picovr.picoplayb100manager.VideoTypeRecognize;
+package com.picovr.picoplaymanager.VideoTypeRecognize;
 
 public class Constant {
 
