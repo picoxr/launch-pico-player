@@ -13,5 +13,6 @@ This demo shows how to launch system video player with specified video file.
 You need to transfer the video named "test.mp4" to /Download/ directory, launch this app then you can watch it.
 
 ## API defined in JAR file
-void launchVideoPlayer(String videoPath, String videoName, String videoType)     
+void launchVideoPlayer(String videoPath, String videoName, String videoType)  
+
 About videoType parameter introduction and more information, refer to [PicoVR Built-in Video Player](http://static.appstore.picovr.com/docs/VideoPlayer/index.html).
