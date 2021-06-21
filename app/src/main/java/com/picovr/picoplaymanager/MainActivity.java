@@ -1,6 +1,5 @@
 package com.picovr.picoplaymanager;
 
-import java.io.File;
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,17 +7,16 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
-
 import com.picovr.picoplaymanager.VideoTypeRecognize.VideoTypeUtils;
 
+import java.io.File;
 
 public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
-
+    private static final String NAME = "test.mp4";
     private static String action = "picovr.intent.action.player";
     private static String directory = null;
-    private static final String NAME = "test.mp4";
     String fileDir;
 
     @Override
@@ -30,12 +28,12 @@ public class MainActivity extends Activity {
         fileDir = directory + File.separator + NAME;
 
     }
-    
+
     public void openPlayerClick(View view) {
         openPlayer(fileDir);
     }
 
-    public void openPlayer(String fileDir){
+    public void openPlayer(String fileDir) {
         //directory = /storage/emulated/0/download/test.mp4
         Log.e(TAG, "directory = " + fileDir);
         String uri = fileDir;

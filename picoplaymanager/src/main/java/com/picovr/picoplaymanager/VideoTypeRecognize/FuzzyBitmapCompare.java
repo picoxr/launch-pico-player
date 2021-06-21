@@ -22,8 +22,9 @@ public class FuzzyBitmapCompare {
         final int bm2Width = bm2.getWidth();
         final int bmHeight = bm1.getHeight();
 
-        if (bmHeight != bm2.getHeight() || bm1Width != bm2Width)
+        if (bmHeight != bm2.getHeight() || bm1Width != bm2Width) {
             return DIFFERENT_SIZE;
+        }
 
         int[] pixels1 = new int[bm1Width];
         int[] pixels2 = new int[bm2Width];
@@ -39,6 +40,11 @@ public class FuzzyBitmapCompare {
         return percent(Count.sT, Count.sF + Count.sT);
     }
 
+    private static void reset() {
+        Count.sT = 0;
+        Count.sF = 0;
+    }
+
     private static void comparePixels(int[] pixels1, int[] pixels2,
                                       int length) {
         for (int i = 0; i < length; i++) {
@@ -49,6 +55,12 @@ public class FuzzyBitmapCompare {
                 Count.sF++;
             }
         }
+    }
+
+    private static String percent(int divisor, int dividend) {
+        final double value = divisor * 1.0 / dividend;
+        DecimalFormat df = new DecimalFormat(RESULT_FORMAT);
+        return df.format(value);
     }
 
     private static boolean pixelsSimilary(int pixel1, int pixel2) {
@@ -67,17 +79,6 @@ public class FuzzyBitmapCompare {
         } else {
             return false;
         }
-    }
-
-    private static String percent(int divisor, int dividend) {
-        final double value = divisor * 1.0 / dividend;
-        DecimalFormat df = new DecimalFormat(RESULT_FORMAT);
-        return df.format(value);
-    }
-
-    private static void reset() {
-        Count.sT = 0;
-        Count.sF = 0;
     }
 
     private static class Count {
