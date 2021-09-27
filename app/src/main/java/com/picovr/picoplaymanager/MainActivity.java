@@ -1,54 +1,27 @@
 package com.picovr.picoplaymanager;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.util.Log;
 import android.view.View;
-import com.picovr.picoplaymanager.VideoTypeRecognize.VideoTypeUtils;
 
 import java.io.File;
 
 public class MainActivity extends Activity {
 
-    private static final String TAG = "MainActivity";
-    private static final String NAME = "test.mp4";
-    private static String action = "picovr.intent.action.player";
+    private static final String NAME = "test360.mp4";
     private static String directory = null;
-    String fileDir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         directory = Environment.getExternalStoragePublicDirectory(DOWNLOAD_SERVICE).toString();
-        fileDir = directory + File.separator + NAME;
-
     }
 
     public void openPlayerClick(View view) {
-        openPlayer(fileDir);
-    }
-
-    public void openPlayer(String fileDir) {
-        //directory = /storage/emulated/0/download/test.mp4
-        Log.e(TAG, "directory = " + fileDir);
-        String uri = fileDir;
-
-        Log.e(TAG, "uri = " + uri);
-        Log.e(TAG, "uri = " + Uri.fromFile(new File(uri)).toString());
-
-        int videoType = VideoTypeUtils.getVideoType(uri);
-        Log.e(TAG, "videoType = " + videoType + "");
-        Intent intent = new Intent();
-        intent.setAction(action);
-        intent.putExtra("title", NAME);
-        intent.putExtra("uri", Uri.fromFile(new File(uri)).toString());
-        intent.putExtra("videoType", videoType + "");
-        startActivity(intent);
+        //For example: directory -- /storage/emulated/0/download/    NAME  -- test360.mp4
+        new PicovrLaunchPlayer().launchVideoPlayer(view.getContext(), directory + File.separator, NAME, "2");
     }
 }
 
