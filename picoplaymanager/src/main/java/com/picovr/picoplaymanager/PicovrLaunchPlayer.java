@@ -3,59 +3,105 @@ package com.picovr.picoplaymanager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
+
 import java.io.File;
 
+/**
+ * @author Admin
+ */
 public class PicovrLaunchPlayer {
-    private static final String TAG = "PicovrLaunchPlayer";
 
-    private static String action = "picovr.intent.action.player";
-    private static String directory = null;
-    private static String NAME = "test.mp4";
+    private final Intent mIntent;
+    private String mUri;
 
-    public void launchVideoPlayer(Context context, String videoPath, String videoName, String videoType) {
-        String path = videoPath + videoName;
-        Log.e(TAG, "path = " + path);
-        Intent intent = new Intent();
-        intent.setAction(action);
-        intent.putExtra("title", videoName);
-        intent.putExtra("uri", Uri.fromFile(new File(path)).toString());
-        intent.putExtra("videoType", videoType);
-        context.startActivity(intent);
-
+    private boolean isExist(String filePath) {
+        return new File(filePath).exists();
     }
 
-    public void launchVideoPlayer(Context context, String videoPath, String videoName, boolean seekPlay, boolean loop,
-                                  boolean isPlayEndAndClose, boolean isSinglePlayLoop, boolean isControl) {
-        String path = videoPath + videoName;
-        Intent intent = new Intent();
-        intent.setAction(action);
-        String uri = Uri.fromFile(new File(path)).toString();
-        intent.putExtra("uri", uri);
-        intent.putExtra("title", videoName);
-        intent.putExtra("videoType", VideoTypeUtils.getVideoType(uri));
-        intent.putExtra("seekPlay", seekPlay);
-        intent.putExtra("loop", loop);
-        intent.putExtra("isPlayEndAndClose", isPlayEndAndClose);
-        intent.putExtra("isSinglePlayLoop", isSinglePlayLoop);
-        intent.putExtra("isControl", isControl);
-        context.startActivity(intent);
+    public PicovrLaunchPlayer() {
+        mIntent = new Intent("picovr.intent.action.player");
     }
 
-    public void launchVideoPlayer(Context context, String videoPath, String videoName, boolean seekPlay,
-                                  boolean loop, boolean isPlayEndAndClose, boolean isSinglePlayLoop,
-                                  boolean isControl, String json, int shouldPlayIndex) {
-        String path = videoPath + videoName;
-        Intent intent = new Intent();
-        intent.setAction(action);
-        intent.putExtra("uri", Uri.fromFile(new File(path)).toString());
-        intent.putExtra("seekPlay", seekPlay);
-        intent.putExtra("loop", loop);
-        intent.putExtra("isPlayEndAndClose", isPlayEndAndClose);
-        intent.putExtra("isSinglePlayLoop", isSinglePlayLoop);
-        intent.putExtra("isControl", isControl);
-        intent.putExtra("play_list", json);
-        intent.putExtra("shouldPlayIndex", shouldPlayIndex);
-        context.startActivity(intent);
+    public PicovrLaunchPlayer uri(String videoPath) {
+        mUri = isExist(videoPath) ? Uri.fromFile(new File(videoPath)).toString() : videoPath;
+        if (isExist(videoPath)) {
+            int videoType = VideoTypeUtils.getVideoType(videoPath);
+            mIntent.putExtra("videoType", String.valueOf(videoType));
+        }
+        mIntent.putExtra("uri", mUri);
+        return this;
+    }
+
+    public PicovrLaunchPlayer title(String videoName) {
+        mIntent.putExtra("title", videoName);
+        return this;
+    }
+
+    public PicovrLaunchPlayer videoType(String videoType) {
+        mIntent.putExtra("videoType", videoType);
+        return this;
+    }
+
+    public PicovrLaunchPlayer playTime(int playTime) {
+        mIntent.putExtra("playTime", playTime);
+        return this;
+    }
+
+    public PicovrLaunchPlayer videoSource(String videoSource) {
+        mIntent.putExtra("videoSource", videoSource);
+        return this;
+    }
+
+    public PicovrLaunchPlayer scenes(int scene) {
+        mIntent.putExtra("scenes", scene);
+        return this;
+    }
+
+    public PicovrLaunchPlayer position(float position) {
+        mIntent.putExtra("position", position);
+        return this;
+    }
+
+    public PicovrLaunchPlayer seekPlay(boolean seekPlay) {
+        mIntent.putExtra("seekPlay", seekPlay);
+        return this;
+    }
+
+    public PicovrLaunchPlayer loop(boolean loop) {
+        mIntent.putExtra("loop", loop);
+        return this;
+    }
+
+    public PicovrLaunchPlayer isControl(boolean isControl) {
+        mIntent.putExtra("isControl", isControl);
+        return this;
+    }
+
+    public PicovrLaunchPlayer play_list(String playList) {
+        mIntent.putExtra("play_list", playList);
+        return this;
+    }
+
+    public PicovrLaunchPlayer shouldPlayIndex(int shouldPlayIndex) {
+        mIntent.putExtra("shouldPlayIndex", shouldPlayIndex);
+        return this;
+    }
+
+    public void launchVideoPlayer(Context context) {
+        if (TextUtils.isEmpty(mUri)) {
+            Log.e("==PicoPlayer==", "uri is null");
+            return;
+        }
+        context.startActivity(mIntent);
+    }
+
+    public void playOrPauseVideoPlayer(Context context) {
+        context.sendBroadcast(new Intent("com.picovr.wing.player.playorpause"));
+    }
+
+    public void exitVideoPlayer(Context context) {
+        context.sendBroadcast(new Intent("com.picovr.wing.player.exit"));
     }
 }

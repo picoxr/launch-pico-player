@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "com.picovr.picoplayb100manager"
+        applicationId "com.picovr.picoplaymanager"
         minSdkVersion 26
         targetSdkVersion 30
         versionCode 1
