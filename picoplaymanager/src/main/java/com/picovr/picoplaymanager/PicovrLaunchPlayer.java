@@ -24,11 +24,13 @@ public class PicovrLaunchPlayer {
         mIntent = new Intent("picovr.intent.action.player");
     }
 
-    public PicovrLaunchPlayer uri(String videoPath) {
+    public PicovrLaunchPlayer uri(String videoPath, boolean isEncrypted) {
         mUri = isExist(videoPath) ? Uri.fromFile(new File(videoPath)).toString() : videoPath;
-        if (isExist(videoPath)) {
-            int videoType = VideoTypeUtils.getVideoType(videoPath);
-            mIntent.putExtra("videoType", String.valueOf(videoType));
+        if (!isEncrypted) {
+            if (isExist(videoPath)) {
+                int videoType = VideoTypeUtils.getVideoType(videoPath);
+                mIntent.putExtra("videoType", String.valueOf(videoType));
+            }
         }
         mIntent.putExtra("uri", mUri);
         return this;

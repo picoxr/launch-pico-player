@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
     }
 
     public void openPlayerClick(View view) {
-        new PicovrLaunchPlayer().uri("/sdcard/test2D.mp4").title("test2D")
+        new PicovrLaunchPlayer().uri("/sdcard/test2D.mp4", false).title("test2D")
 //                .play_list("[{\"index\":0,\"name\":\"test2D.mp4\",\"playMode\":0,\"url\":\"%2Fsdcard%2Ftest2D.mp4\"},
 //                {\"index\":1,\"name\":\"test.mp4\",\"playMode\":2,\"url\":\"%2Fsdcard%2Ftest.mp4\"},
 //                {\"index\":2,\"name\":\"test2D2.mp4\",\"playMode\":0,\"url\":\"%2Fsdcard%2Ftest2D.mp4\"}]")
